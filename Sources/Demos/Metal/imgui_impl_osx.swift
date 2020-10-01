@@ -16,7 +16,7 @@ var g_MouseCursorHidden: Bool = false
 func ImGui_ImplOSX_Init() {
     let io = ImGuiGetIO()!
     
-    //io.pointee.ConfigFlags |= Int32(ImGuiConfigFlags_DockingEnable.rawValue)
+    io.pointee.ConfigFlags |= Int32(ImGuiConfigFlags_DockingEnable.rawValue)
     //io.pointee.ConfigFlags |= Int32(ImGuiConfigFlags_DpiEnableScaleViewports.rawValue)
     //io.pointee.ConfigFlags |= Int32(ImGuiConfigFlags_DpiEnableScaleFonts.rawValue)
     
