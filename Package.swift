@@ -9,7 +9,7 @@ var package = Package(
     ],
     targets: [
         .target(name: "ImGui", dependencies: ["CImGui"]),
-        .target(name: "CImGui", path: "Sources/CImGui", cxxSettings: [.define("CIMGUI_DEFINE_ENUMS_AND_STRUCTS")]),
+        .target(name: "CImGui", path: "Sources/CImGui"/*, cxxSettings: [.define("CIMGUI_DEFINE_ENUMS_AND_STRUCTS")]*/),
         .target(name: "AutoWrapper"),
         .testTarget(name: "ImGuiTests", dependencies: ["ImGui"])
     ],
