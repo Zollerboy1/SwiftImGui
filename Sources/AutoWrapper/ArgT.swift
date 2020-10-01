@@ -19,17 +19,16 @@ public struct ArgType: Decodable {
         var raw: String = try container.decode(String.self)
 
         // const
-        if let range = raw.range(of: "const") {
+        if let range = raw.range(of: "const ") {
             self.isConst = true
             raw.removeSubrange(range)
-            raw = raw.replacingOccurrences(of: "const", with: "")
             raw = raw.trimmingCharacters(in: .whitespaces)
         } else {
             self.isConst = false
         }
 
         // unsigned
-        if let unsigned = raw.range(of: "unsigned") {
+        if let unsigned = raw.range(of: "unsigned ") {
             self.isUnsigned = true
             raw.removeSubrange(unsigned)
             raw = raw.trimmingCharacters(in: .whitespaces)
@@ -37,8 +36,8 @@ public struct ArgType: Decodable {
             self.isUnsigned = false
         }
 
-        precondition(!raw.contains("const"))
-        precondition(!raw.contains("unsigned"))
+        precondition(!raw.contains("const "))
+        precondition(!raw.contains("unsigned "))
         self.type = DataType(string: raw)
     }
 }

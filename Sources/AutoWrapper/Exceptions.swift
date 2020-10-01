@@ -23,6 +23,7 @@ public enum Exceptions {
         "ImVector_capacity",
         "ImVector_clear",
         "ImVector_empty",
+        "ImVector_max_size",
         "ImVector_pop_back",
         "ImVector_reserve",
         "ImVector_resizeNil",

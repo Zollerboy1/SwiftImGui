@@ -8,8 +8,8 @@ var package = Package(
         .library(name: "CImGui", targets: ["CImGui"])
     ],
     targets: [
-        .target(name: "ImGui", dependencies: ["CImGui"]),
-        .target(name: "CImGui", path: "Sources/CImGui"/*, cxxSettings: [.define("CIMGUI_DEFINE_ENUMS_AND_STRUCTS")]*/),
+        .target(name: "ImGui", dependencies: ["CImGui"], cxxSettings: [.define("CIMGUI_DEFINE_ENUMS_AND_STRUCTS")]),
+        .target(name: "CImGui", path: "Sources/CImGui"),
         .target(name: "AutoWrapper"),
         .testTarget(name: "ImGuiTests", dependencies: ["ImGui"])
     ],
@@ -17,9 +17,9 @@ var package = Package(
 )
 
 package.products.append(.executable(name: "DemoMinimal", targets: ["DemoMinimal"]))
-package.targets.append(.target(name: "DemoMinimal", dependencies: ["ImGui"], path: "Sources/Demos/Minimal"))
+package.targets.append(.target(name: "DemoMinimal", dependencies: ["ImGui"], path: "Sources/Demos/Minimal", cxxSettings: [.define("CIMGUI_DEFINE_ENUMS_AND_STRUCTS")]))
 
 #if canImport(Metal) && os(macOS)
 package.products.append(.executable(name: "DemoMetal-macOS", targets: ["DemoMetal"]))
-package.targets.append(.target(name: "DemoMetal", dependencies: ["ImGui"], path: "Sources/Demos/Metal"))
+package.targets.append(.target(name: "DemoMetal", dependencies: ["ImGui"], path: "Sources/Demos/Metal", cxxSettings: [.define("CIMGUI_DEFINE_ENUMS_AND_STRUCTS")]))
 #endif

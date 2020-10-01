@@ -32,24 +32,23 @@ public struct DataType: Decodable {
         var string = string
 
         // const
-        if let range = string.range(of: "const") {
+        if let range = string.range(of: "const ") {
             isConst = true
             string.removeSubrange(range)
-            string = string.replacingOccurrences(of: "const", with: "")
             string = string.trimmingCharacters(in: .whitespaces)
         } else {
             isConst = false
         }
 
         // unsigned
-        if let unsigned = string.range(of: "unsigned") {
+        if let unsigned = string.range(of: "unsigned ") {
             string.removeSubrange(unsigned)
             string = string.replacingOccurrences(of: "int", with: "uint")
             string = string.trimmingCharacters(in: .whitespaces)
         }
 
-        precondition(!string.contains("const"))
-        precondition(!string.contains("unsigned"))
+        precondition(!string.contains("const "))
+        precondition(!string.contains("unsigned "))
 
         if let primitive = ValueType(rawValue: string) {
             // primitive types int, char, float ....
